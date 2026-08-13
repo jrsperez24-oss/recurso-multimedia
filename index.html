@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Los Cinco Sentidos</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #fff8e1);
+      color: #222;
+      text-align: center;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 50px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 50px;
+      margin-bottom: 20px;
+      animation: aparecer 1.5s ease;
+    }
+
+    h2 {
+      font-size: 34px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      max-width: 750px;
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .emoji {
+      font-size: 90px;
+      margin: 15px;
+      animation: flotar 2s infinite alternate;
+    }
+
+    .sentidos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .tarjeta {
+      background: white;
+      width: 180px;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: 0.3s;
+    }
+
+    .tarjeta:hover {
+      transform: scale(1.08);
+    }
+
+    .tarjeta span {
+      font-size: 60px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 14px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: #1976d2;
+      color: white;
+      margin: 10px;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    iframe {
+      width: 80%;
+      max-width: 700px;
+      height: 390px;
+      border: none;
+      border-radius: 15px;
+    }
+
+    .actividad {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 650px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    #respuesta {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    footer {
+      padding: 20px;
+      background: #222;
+      color: white;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes flotar {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-15px);
+      }
+    }
+
+    @media(max-width: 700px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      iframe {
+        width: 100%;
+        height: 230px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<section>
+  <div class="emoji">👀 👂 👃 👅 ✋</div>
+  <h1>Los Cinco Sentidos</h1>
+
+  <p>
+    Los sentidos nos permiten conocer y comprender todo lo que sucede
+    a nuestro alrededor. Gracias a ellos podemos observar, escuchar,
+    oler, saborear y sentir.
+  </p>
+
+  <button onclick="document.getElementById('sentidos').scrollIntoView({behavior:'smooth'})">
+    Comenzar
+  </button>
+</section>
+
+<section id="sentidos">
+  <h2>Conozcamos nuestros sentidos</h2>
+
+  <div class="sentidos">
+
+    <div class="tarjeta">
+      <span>👀</span>
+      <h3>Vista</h3>
+      <p>Nos permite observar colores, formas y objetos.</p>
+    </div>
+
+    <div class="tarjeta">
+      <span>👂</span>
+      <h3>Oído</h3>
+      <p>Nos permite escuchar sonidos.</p>
+    </div>
+
+    <div class="tarjeta">
+      <span>👃</span>
+      <h3>Olfato</h3>
+      <p>Nos ayuda a reconocer diferentes olores.</p>
+    </div>
+
+    <div class="tarjeta">
+      <span>👅</span>
+      <h3>Gusto</h3>
+      <p>Nos permite reconocer los sabores.</p>
+    </div>
+
+    <div class="tarjeta">
+      <span>✋</span>
+      <h3>Tacto</h3>
+      <p>Nos permite sentir texturas y temperaturas.</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>🔊 Experimentemos con el oído</h2>
+
+  <p>
+    Presiona el botón y escucha el sonido. Nuestro sentido del oído
+    nos ayuda a reconocer diferentes sonidos del ambiente.
+  </p>
+
+  <button onclick="sonido()">▶ Escuchar sonido</button>
+
+  <h2 style="margin-top:50px;">🎵 Música</h2>
+
+  <p>
+    También podemos reconocer diferentes tonos y melodías utilizando
+    nuestro sentido del oído.
+  </p>
+
+  <button onclick="musica()">🎶 Reproducir música</button>
+</section>
+
+<section>
+  <h2>🎬 Video educativo</h2>
+
+  <p>
+    Observa este video para conocer un poco más sobre los cinco sentidos.
+  </p>
+
+  <iframe
+    src="https://www.youtube.com/embed/a_EfwFzm1ys"
+    allowfullscreen>
+  </iframe>
+</section>
+
+<section>
+  <div class="actividad">
+
+    <h2>🎮 Actividad final</h2>
+
+    <p>
+      ¿Qué sentido utilizamos principalmente para escuchar una canción?
+    </p>
+
+    <button onclick="correcto()">👂 Oído</button>
+    <button onclick="incorrecto()">👃 Olfato</button>
+    <button onclick="incorrecto()">👅 Gusto</button>
+
+    <div id="respuesta"></div>
+
+  </div>
+</section>
+
+<footer>
+  Recurso multimedia educativo | Los Cinco Sentidos
+</footer>
+
+<script>
+
+function sonido() {
+  const audio = new AudioContext();
+  const oscilador = audio.createOscillator();
+  const volumen = audio.createGain();
+
+  oscilador.connect(volumen);
+  volumen.connect(audio.destination);
+
+  oscilador.frequency.value = 500;
+  volumen.gain.value = 0.15;
+
+  oscilador.start();
+
+  setTimeout(() => {
+    oscilador.stop();
+  }, 800);
+}
+
+function musica() {
+  const audio = new AudioContext();
+
+  const notas = [261, 329, 392, 523];
+
+  notas.forEach((nota, i) => {
+
+    const oscilador = audio.createOscillator();
+    const volumen = audio.createGain();
+
+    oscilador.connect(volumen);
+    volumen.connect(audio.destination);
+
+    oscilador.frequency.value = nota;
+    volumen.gain.value = 0.10;
+
+    oscilador.start(audio.currentTime + i * 0.4);
+    oscilador.stop(audio.currentTime + i * 0.4 + 0.35);
+
+  });
+}
+
+function correcto() {
+  document.getElementById("respuesta").innerHTML =
+  "🎉 ¡Correcto! Utilizamos el sentido del oído para escuchar.";
+}
+
+function incorrecto() {
+  document.getElementById("respuesta").innerHTML =
+  "🤔 Inténtalo nuevamente.";
+}
+
+</script>
+
+</body>
+</html>
