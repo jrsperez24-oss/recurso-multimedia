@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Los Cinco Sentidos | Recurso Multimedia</title>
+<title>El Sistema Solar | Recurso Multimedia</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -17,113 +16,110 @@
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#fffaf4;
-    color:#17233c;
+    background:#050817;
+    color:white;
+    overflow-x:hidden;
 }
 
-/* MENÚ */
+/* ESTRELLAS */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+}
+
+body::before{
+    background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(#9cdcff 1px, transparent 1px);
+    background-size:55px 55px, 90px 90px;
+    background-position:0 0, 25px 30px;
+    opacity:.45;
+}
+
+body::after{
+    background:
+    radial-gradient(circle at 20% 20%,rgba(74,65,200,.25),transparent 30%),
+    radial-gradient(circle at 80% 60%,rgba(13,140,200,.18),transparent 35%);
+}
+
+
+/* MENU */
 
 nav{
     position:sticky;
     top:0;
     z-index:100;
-    background:white;
-    box-shadow:0 3px 15px rgba(0,0,0,.10);
+    background:rgba(5,8,23,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.12);
 }
 
 .menu{
     max-width:1200px;
     margin:auto;
+    padding:15px 22px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    padding:14px 20px;
+    align-items:center;
 }
 
 .logo{
-    font-size:24px;
+    font-size:22px;
     font-weight:bold;
 }
 
 .logo span{
-    color:#7c42d8;
+    color:#66c9ff;
 }
 
-.menu-links{
+.links{
     display:flex;
     gap:25px;
 }
 
-.menu-links a{
+.links a{
+    color:white;
     text-decoration:none;
-    color:#17233c;
     font-weight:bold;
 }
 
-.menu-links a:hover{
-    color:#743bd1;
+.links a:hover{
+    color:#73d7ff;
 }
 
 
 /* PORTADA */
 
 .hero{
-    min-height:600px;
-    position:relative;
-    overflow:hidden;
-
-    background:
-    radial-gradient(circle at 10% 20%,rgba(255,255,255,.8) 0 60px,transparent 62px),
-    radial-gradient(circle at 85% 15%,rgba(255,255,255,.8) 0 75px,transparent 77px),
-    linear-gradient(180deg,#91e1ff,#d9f4ff 65%,#c5ec8a);
-
+    min-height:610px;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-
+    position:relative;
+    overflow:hidden;
     padding:70px 20px;
 }
 
-.hero::before{
-    content:"⭐   ☁️        ✨       ☁️       ⭐";
-    position:absolute;
-    top:35px;
-    width:100%;
-    font-size:38px;
-    opacity:.8;
-    letter-spacing:25px;
-}
-
 .hero-contenido{
-    max-width:850px;
-    z-index:2;
-}
-
-.personajes{
-    font-size:75px;
-    margin-bottom:10px;
-    animation:flotar 2.5s ease-in-out infinite alternate;
+    max-width:900px;
+    z-index:5;
 }
 
 .hero h1{
-    font-size:72px;
+    font-size:75px;
     line-height:1;
-    margin-bottom:20px;
-    color:#17233c;
-    text-shadow:4px 4px 0 white;
+    margin-bottom:22px;
+    text-shadow:0 0 35px #258bd6;
 }
 
 .hero h1 span{
-    background:linear-gradient(
-        90deg,
-        #ff4938,
-        #ff9b28,
-        #47af55,
-        #2b92e4,
-        #d44e92
-    );
-
+    background:linear-gradient(90deg,#ffcf40,#ff8d3c,#6cd7ff);
     -webkit-background-clip:text;
     color:transparent;
 }
@@ -131,26 +127,118 @@ nav{
 .hero p{
     font-size:21px;
     line-height:1.6;
-    max-width:720px;
+    color:#dceeff;
+    max-width:750px;
     margin:auto;
 }
 
-.boton-principal{
+.cohete{
+    font-size:75px;
+    position:absolute;
+    left:8%;
+    bottom:100px;
+    animation:cohete 4s ease-in-out infinite alternate;
+}
+
+.astronauta{
+    font-size:80px;
+    position:absolute;
+    right:8%;
+    top:130px;
+    animation:flotar 3s ease-in-out infinite alternate;
+}
+
+.boton{
     display:inline-block;
-    margin-top:28px;
-    background:linear-gradient(135deg,#8652e5,#6431b8);
-    color:white;
-    padding:16px 35px;
-    border-radius:40px;
+    margin-top:30px;
+    padding:16px 34px;
+    background:linear-gradient(135deg,#368fe5,#7459e8);
+    border-radius:35px;
     text-decoration:none;
-    font-size:20px;
+    color:white;
+    font-size:19px;
     font-weight:bold;
-    box-shadow:0 7px 15px rgba(80,30,150,.30);
+    box-shadow:0 8px 24px rgba(43,131,220,.45);
     transition:.3s;
 }
 
-.boton-principal:hover{
+.boton:hover{
     transform:translateY(-4px) scale(1.04);
+}
+
+
+/* SISTEMA SOLAR ANIMADO */
+
+.sistema{
+    height:230px;
+    position:relative;
+    max-width:850px;
+    margin:25px auto 0;
+}
+
+.sol{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:115px;
+    height:115px;
+    border-radius:50%;
+    background:radial-gradient(circle,#fff7a3 5%,#ffc229 45%,#ff6b00 75%);
+    box-shadow:0 0 35px #ffae00,0 0 70px #ff7500;
+    animation:brillo 2s infinite alternate;
+}
+
+.orbita{
+    position:absolute;
+    left:50%;
+    top:50%;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+}
+
+.o1{width:190px;height:70px;}
+.o2{width:270px;height:105px;}
+.o3{width:355px;height:140px;}
+.o4{width:445px;height:175px;}
+.o5{width:550px;height:210px;}
+
+.planetita{
+    position:absolute;
+    top:50%;
+    left:50%;
+    border-radius:50%;
+}
+
+.mercurio{
+    width:13px;height:13px;
+    background:#aaa;
+    animation:girar1 5s linear infinite;
+}
+
+.venus{
+    width:19px;height:19px;
+    background:#dda94c;
+    animation:girar2 7s linear infinite;
+}
+
+.tierra{
+    width:21px;height:21px;
+    background:linear-gradient(135deg,#1996e3,#2bb76b);
+    animation:girar3 9s linear infinite;
+}
+
+.marte{
+    width:17px;height:17px;
+    background:#d35435;
+    animation:girar4 11s linear infinite;
+}
+
+.jupiter{
+    width:34px;height:34px;
+    background:linear-gradient(#ddbc8a,#985f40,#dfc7a0);
+    animation:girar5 14s linear infinite;
 }
 
 
@@ -159,390 +247,394 @@ nav{
 .seccion{
     max-width:1200px;
     margin:auto;
-    padding:60px 25px;
+    padding:60px 24px;
 }
 
 .titulo{
-    font-size:38px;
     text-align:center;
-    margin-bottom:12px;
+    font-size:40px;
+    margin-bottom:10px;
 }
 
 .subtitulo{
     text-align:center;
-    font-size:19px;
-    color:#555;
-    margin-bottom:35px;
+    color:#b9cbea;
+    font-size:18px;
+    margin-bottom:38px;
 }
 
 
-/* TARJETAS SENTIDOS */
+/* TARJETAS PLANETAS */
 
-.tarjetas{
+.planetas{
     display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:18px;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
 }
 
-.tarjeta{
-    min-height:300px;
-    padding:25px 16px;
+.planeta{
+    background:linear-gradient(145deg,#131b38,#10152b);
+    border:1px solid rgba(255,255,255,.13);
     border-radius:25px;
+    padding:25px 18px;
     text-align:center;
-    box-shadow:0 8px 20px rgba(0,0,0,.10);
+    box-shadow:0 10px 25px rgba(0,0,0,.30);
     transition:.3s;
 }
 
-.tarjeta:hover{
+.planeta:hover{
     transform:translateY(-10px);
+    border-color:#5ccfff;
 }
 
-.tarjeta:nth-child(1){
-    background:#fff0cd;
-    border:2px solid #ffd57c;
-}
-
-.tarjeta:nth-child(2){
-    background:#eefadc;
-    border:2px solid #bddd8d;
-}
-
-.tarjeta:nth-child(3){
-    background:#e5f5ff;
-    border:2px solid #98d9ff;
-}
-
-.tarjeta:nth-child(4){
-    background:#ffe8ed;
-    border:2px solid #ffb4c4;
-}
-
-.tarjeta:nth-child(5){
-    background:#f1eaff;
-    border:2px solid #c8a9ff;
-}
-
-.icono{
-    font-size:75px;
-    display:block;
-    margin:15px;
-}
-
-.tarjeta h3{
-    font-size:25px;
-    margin-bottom:15px;
-}
-
-.tarjeta p{
-    line-height:1.5;
-    color:#333;
-}
-
-
-/* CONTENIDO MULTIMEDIA */
-
-.multimedia{
-    background:linear-gradient(135deg,#f6fff0,#ffffff);
-    border-radius:30px;
-    box-shadow:0 8px 25px rgba(0,0,0,.10);
-    padding:35px;
-    margin-top:15px;
-}
-
-.multimedia-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-}
-
-.caja{
-    background:white;
-    padding:30px;
-    border-radius:25px;
-    border:2px solid #e9e9e9;
-}
-
-.caja h2{
-    font-size:28px;
-    margin-bottom:12px;
-}
-
-.caja p{
-    line-height:1.6;
-    margin-bottom:20px;
-}
-
-
-/* SONIDOS */
-
-.sonidos{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-}
-
-.sonido{
-    background:#f6fff2;
-    border:1px solid #b9dcac;
-    border-radius:18px;
-    padding:18px;
-    text-align:center;
-}
-
-.sonido span{
-    font-size:42px;
-}
-
-button{
-    border:none;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.play{
-    width:42px;
-    height:42px;
+.planeta-visual{
+    width:100px;
+    height:100px;
     border-radius:50%;
-    background:#35a853;
-    color:white;
-    margin-top:8px;
+    margin:5px auto 20px;
+    box-shadow:inset -18px -10px 25px rgba(0,0,0,.35),
+               0 0 25px rgba(255,255,255,.08);
+    animation:flotar 3s ease-in-out infinite alternate;
+}
+
+.mer{
+    background:radial-gradient(circle at 35% 30%,#ccc,#777);
+}
+
+.ven{
+    background:radial-gradient(circle at 35% 30%,#ffd77a,#a96e22);
+}
+
+.tie{
+    background:
+    radial-gradient(circle at 35% 30%,#4ed078 0 12%,transparent 13%),
+    radial-gradient(circle at 55% 60%,#3fbd6d 0 16%,transparent 17%),
+    radial-gradient(circle at 30% 65%,#39a961 0 10%,transparent 11%),
+    #248dd2;
+}
+
+.mar{
+    background:radial-gradient(circle at 30% 30%,#ff8c61,#a23420);
+}
+
+.jup{
+    background:linear-gradient(#d5b28b,#8c543a,#e2c8a7,#9b6448,#e8cfab);
+}
+
+.sat{
+    background:radial-gradient(circle,#e9cf82,#9a7a3d);
+    position:relative;
+}
+
+.sat::after{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:32px;
+    border:8px solid #d5bc77;
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) rotate(-15deg);
+    z-index:-1;
+}
+
+.ura{
+    background:radial-gradient(circle,#b9fbff,#58cbd7);
+}
+
+.nep{
+    background:radial-gradient(circle,#6c9dff,#254bc3);
+}
+
+.planeta h3{
+    font-size:24px;
+    margin-bottom:12px;
+    color:#7edcff;
+}
+
+.planeta p{
+    line-height:1.55;
+    color:#d4def3;
+}
+
+
+/* DATO CENTRAL */
+
+.dato{
+    margin-top:35px;
+    background:linear-gradient(135deg,#14244a,#20235d);
+    border:1px solid #395da8;
+    padding:25px;
+    border-radius:22px;
+    text-align:center;
     font-size:18px;
 }
 
-.play:hover{
-    transform:scale(1.1);
+
+/* MULTIMEDIA */
+
+.multimedia{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
 }
 
+.caja{
+    background:linear-gradient(145deg,#101936,#11162c);
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:26px;
+    padding:30px;
+}
 
-/* VIDEO */
+.caja h2{
+    margin-bottom:15px;
+    font-size:28px;
+}
+
+.caja p{
+    color:#c9d6ee;
+    line-height:1.6;
+    margin-bottom:20px;
+}
 
 .video{
     width:100%;
     aspect-ratio:16/9;
     border:none;
-    border-radius:20px;
-    box-shadow:0 6px 18px rgba(0,0,0,.15);
+    border-radius:18px;
 }
 
-
-/* DATO */
-
-.dato{
-    margin-top:20px;
-    padding:18px;
-    background:#efffe7;
-    border:2px dashed #8bc273;
-    border-radius:16px;
+.boton-audio{
+    padding:14px 23px;
+    margin:8px;
+    border:none;
+    border-radius:25px;
+    background:linear-gradient(135deg,#297fe0,#705be3);
+    color:white;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
 }
 
-.dato strong{
-    color:#208c3a;
+.boton-audio:hover{
+    transform:scale(1.05);
 }
 
 
 /* ACTIVIDAD */
 
 .actividad{
-    background:linear-gradient(135deg,#fff9fd,#f5edff);
-    border-radius:30px;
+    max-width:750px;
+    margin:auto;
+    background:linear-gradient(145deg,#161d3c,#1c1640);
     padding:40px;
-    box-shadow:0 8px 24px rgba(0,0,0,.10);
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
 }
 
 .pregunta{
-    background:white;
-    border-radius:22px;
-    padding:28px;
-    max-width:700px;
-    margin:auto;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-}
-
-.pregunta h3{
     font-size:25px;
-    margin-bottom:25px;
+    margin:25px 0;
 }
 
 .respuestas{
     display:flex;
+    gap:15px;
     flex-wrap:wrap;
     justify-content:center;
-    gap:15px;
 }
 
 .respuesta{
     background:#fff;
-    border:2px solid #d7c4f7;
-    padding:15px 20px;
+    color:#192046;
+    padding:15px 21px;
     border-radius:18px;
+    border:none;
+    font-weight:bold;
     font-size:17px;
-    transition:.2s;
+    cursor:pointer;
 }
 
 .respuesta:hover{
-    background:#7a46d8;
-    color:white;
-    transform:scale(1.05);
+    background:#5bc9ff;
+    color:#07172a;
 }
 
 #resultado{
-    margin-top:22px;
-    font-size:22px;
+    margin-top:25px;
+    font-size:21px;
     font-weight:bold;
 }
 
 
-/* CUIDADO */
-
-.cuidado{
-    text-align:center;
-    background:linear-gradient(90deg,#fff2ba,#fffbe7);
-    padding:35px 20px;
-    border-radius:25px;
-    margin-top:45px;
-}
-
-.cuidado h2{
-    color:#b14327;
-    margin-bottom:10px;
-}
-
-
-/* PIE */
+/* FOOTER */
 
 footer{
-    background:linear-gradient(90deg,#7d43d1,#6634b2);
-    color:white;
+    background:#070b1d;
+    border-top:1px solid rgba(255,255,255,.12);
+    padding:35px 20px;
     text-align:center;
-    padding:28px 20px;
+    color:#b9c9e6;
 }
 
 footer strong{
     display:block;
+    color:white;
+    margin:8px 0;
     font-size:18px;
-    margin-top:8px;
 }
 
 
 /* ANIMACIONES */
 
 @keyframes flotar{
+    from{transform:translateY(0);}
+    to{transform:translateY(-13px);}
+}
 
-    from{
-        transform:translateY(0);
-    }
+@keyframes cohete{
+    from{transform:translate(0,0) rotate(-10deg);}
+    to{transform:translate(30px,-30px) rotate(-4deg);}
+}
 
-    to{
-        transform:translateY(-12px);
-    }
+@keyframes brillo{
+    from{box-shadow:0 0 25px #ffae00,0 0 55px #ff7500;}
+    to{box-shadow:0 0 45px #ffe86a,0 0 90px #ff7500;}
+}
 
+@keyframes girar1{
+    from{transform:rotate(0deg) translateX(95px);}
+    to{transform:rotate(360deg) translateX(95px);}
+}
+
+@keyframes girar2{
+    from{transform:rotate(0deg) translateX(135px);}
+    to{transform:rotate(360deg) translateX(135px);}
+}
+
+@keyframes girar3{
+    from{transform:rotate(0deg) translateX(178px);}
+    to{transform:rotate(360deg) translateX(178px);}
+}
+
+@keyframes girar4{
+    from{transform:rotate(0deg) translateX(222px);}
+    to{transform:rotate(360deg) translateX(222px);}
+}
+
+@keyframes girar5{
+    from{transform:rotate(0deg) translateX(275px);}
+    to{transform:rotate(360deg) translateX(275px);}
 }
 
 
 /* CELULAR */
 
-@media(max-width:900px){
-
-    .tarjetas{
+@media(max-width:950px){
+    .planetas{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .multimedia-grid{
+    .multimedia{
         grid-template-columns:1fr;
     }
 
-    .menu-links{
+    .links{
         display:none;
     }
 
     .hero h1{
-        font-size:50px;
+        font-size:52px;
     }
 
+    .sistema{
+        transform:scale(.75);
+    }
 }
 
-@media(max-width:550px){
-
-    .tarjetas{
+@media(max-width:560px){
+    .planetas{
         grid-template-columns:1fr;
     }
 
     .hero h1{
-        font-size:40px;
+        font-size:42px;
     }
 
-    .personajes{
-        font-size:52px;
+    .astronauta,
+    .cohete{
+        display:none;
     }
 
+    .sistema{
+        transform:scale(.52);
+        margin-top:0;
+    }
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- MENÚ -->
-
 <nav>
-
 <div class="menu">
 
 <div class="logo">
-🧠 Los Cinco <span>Sentidos</span>
+🚀 <span>Exploradores</span> del Espacio
 </div>
 
-<div class="menu-links">
-
-<a href="#inicio">🏠 Inicio</a>
-
-<a href="#sentidos">📖 Sentidos</a>
-
-<a href="#sonidos">🎵 Sonidos</a>
-
-<a href="#video">🎬 Video</a>
-
-<a href="#actividad">🧩 Actividad</a>
-
+<div class="links">
+<a href="#inicio">Inicio</a>
+<a href="#planetas">Planetas</a>
+<a href="#multimedia">Multimedia</a>
+<a href="#actividad">Actividad</a>
 </div>
 
 </div>
-
 </nav>
-
 
 
 <!-- PORTADA -->
 
 <section class="hero" id="inicio">
 
+<div class="cohete">🚀</div>
+<div class="astronauta">👨‍🚀</div>
+
 <div class="hero-contenido">
 
-<div class="personajes">
-👦🏻 🔎 &nbsp;&nbsp;&nbsp; 👧🏻 👋
-</div>
-
 <h1>
-Los Cinco<br>
-<span>Sentidos</span>
+El <span>Sistema Solar</span>
 </h1>
 
 <p>
-
-Los sentidos nos permiten conocer y comprender todo lo que sucede
-a nuestro alrededor.
-
-<br><br>
-
-Gracias a ellos podemos observar, escuchar, oler, saborear y sentir.
-
+Prepárate para viajar por el espacio y conocer el Sol,
+los ocho planetas y algunas características sorprendentes
+de nuestro Sistema Solar.
 </p>
 
-<a href="#sentidos" class="boton-principal">
-Comenzar ➜
+<div class="sistema">
+
+<div class="sol"></div>
+
+<div class="orbita o1"></div>
+<div class="orbita o2"></div>
+<div class="orbita o3"></div>
+<div class="orbita o4"></div>
+<div class="orbita o5"></div>
+
+<div class="planetita mercurio"></div>
+<div class="planetita venus"></div>
+<div class="planetita tierra"></div>
+<div class="planetita marte"></div>
+<div class="planetita jupiter"></div>
+
+</div>
+
+<a href="#planetas" class="boton">
+🚀 Iniciar viaje
 </a>
 
 </div>
@@ -550,280 +642,190 @@ Comenzar ➜
 </section>
 
 
+<!-- PLANETAS -->
 
-<!-- SENTIDOS -->
-
-<section class="seccion" id="sentidos">
+<section class="seccion" id="planetas">
 
 <h2 class="titulo">
-⭐ Exploremos cada sentido
+🪐 Conozcamos los planetas
 </h2>
 
 <p class="subtitulo">
-Conoce para qué sirve cada uno de nuestros cinco sentidos.
+Cada planeta tiene características diferentes. Descubre cuáles son.
 </p>
 
 
-<div class="tarjetas">
+<div class="planetas">
 
 
-<div class="tarjeta">
-
-<h3 style="color:#ef641c;">Vista</h3>
-
-<span class="icono">👁️</span>
-
+<div class="planeta">
+<div class="planeta-visual mer"></div>
+<h3>Mercurio</h3>
 <p>
-
-Con nuestros ojos podemos ver los colores, las formas,
-los tamaños y todo lo que nos rodea.
-
+Es el planeta más cercano al Sol y también el más pequeño
+del Sistema Solar.
 </p>
-
 </div>
 
 
-
-<div class="tarjeta">
-
-<h3 style="color:#2f8729;">Oído</h3>
-
-<span class="icono">👂</span>
-
+<div class="planeta">
+<div class="planeta-visual ven"></div>
+<h3>Venus</h3>
 <p>
-
-Con nuestros oídos podemos escuchar sonidos,
-música y las voces de las personas.
-
+Es un planeta muy caliente y está cubierto por una atmósfera
+muy densa.
 </p>
-
 </div>
 
 
-
-<div class="tarjeta">
-
-<h3 style="color:#278cc9;">Olfato</h3>
-
-<span class="icono">👃</span>
-
+<div class="planeta">
+<div class="planeta-visual tie"></div>
+<h3>Tierra</h3>
 <p>
-
-Con nuestra nariz podemos reconocer los aromas
-de las flores, alimentos y muchas cosas más.
-
+Es nuestro hogar y el único planeta conocido donde existe vida.
+Gran parte de su superficie está cubierta de agua.
 </p>
-
 </div>
 
 
-
-<div class="tarjeta">
-
-<h3 style="color:#e54677;">Gusto</h3>
-
-<span class="icono">👅</span>
-
+<div class="planeta">
+<div class="planeta-visual mar"></div>
+<h3>Marte</h3>
 <p>
-
-Con nuestra lengua podemos reconocer sabores
-dulces, salados, ácidos y amargos.
-
+Es conocido como el planeta rojo debido al color de su superficie.
 </p>
-
 </div>
 
 
-
-<div class="tarjeta">
-
-<h3 style="color:#7440bd;">Tacto</h3>
-
-<span class="icono">✋</span>
-
+<div class="planeta">
+<div class="planeta-visual jup"></div>
+<h3>Júpiter</h3>
 <p>
-
-Con nuestra piel podemos sentir si algo está
-frío, caliente, suave, áspero o rugoso.
-
+Es el planeta más grande del Sistema Solar y posee una enorme
+tormenta conocida como la Gran Mancha Roja.
 </p>
-
 </div>
 
 
-</div>
-
-</section>
-
-
-
-<!-- MULTIMEDIA -->
-
-<section class="seccion" id="sonidos">
-
-<div class="multimedia">
-
-<div class="multimedia-grid">
-
-
-<!-- SONIDOS -->
-
-<div class="caja">
-
-<h2>
-🎵 Escucha y adivina
-</h2>
-
+<div class="planeta">
+<div class="planeta-visual sat"></div>
+<h3>Saturno</h3>
 <p>
-
-Presiona cada botón y utiliza tu sentido del oído
-para reconocer diferentes sonidos.
-
+Es conocido por sus grandes y llamativos anillos formados por
+hielo y otros materiales.
 </p>
-
-
-<div class="sonidos">
-
-
-<div class="sonido">
-
-<span>🐦</span>
-
-<p>Pájaro</p>
-
-<button class="play" onclick="sonidoPajaro()">
-▶
-</button>
-
 </div>
 
 
-
-<div class="sonido">
-
-<span>🐶</span>
-
-<p>Perro</p>
-
-<button class="play" onclick="sonidoPerro()">
-▶
-</button>
-
+<div class="planeta">
+<div class="planeta-visual ura"></div>
+<h3>Urano</h3>
+<p>
+Es un planeta frío y tiene una inclinación muy particular
+alrededor del Sol.
+</p>
 </div>
 
 
-
-<div class="sonido">
-
-<span>🔔</span>
-
-<p>Campana</p>
-
-<button class="play" onclick="sonidoCampana()">
-▶
-</button>
-
+<div class="planeta">
+<div class="planeta-visual nep"></div>
+<h3>Neptuno</h3>
+<p>
+Es el planeta más lejano del Sol y posee fuertes vientos
+en su atmósfera.
+</p>
 </div>
-
-
-
-<div class="sonido">
-
-<span>🌧️</span>
-
-<p>Lluvia</p>
-
-<button class="play" onclick="sonidoLluvia()">
-▶
-</button>
-
-</div>
-
 
 </div>
 
 
 <div class="dato">
 
-💡 <strong>¿Sabías que?</strong>
+☀️ <strong>¿Sabías que?</strong><br><br>
 
-<br>
-
-Nuestro oído nos permite distinguir una gran variedad de sonidos.
-
-</div>
-
+El Sol es una estrella y se encuentra en el centro de nuestro
+Sistema Solar. Los ocho planetas giran alrededor de él.
 
 </div>
 
+</section>
+
+
+<!-- MULTIMEDIA -->
+
+<section class="seccion" id="multimedia">
+
+<h2 class="titulo">
+🌌 Exploremos el espacio
+</h2>
+
+<p class="subtitulo">
+Utiliza los recursos multimedia para seguir aprendiendo.
+</p>
+
+
+<div class="multimedia">
+
+
+<!-- SONIDO -->
+
+<div class="caja">
+
+<h2>🎧 Experiencia espacial</h2>
+
+<p>
+Presiona los botones para escuchar sonidos creados especialmente
+para esta actividad.
+</p>
+
+
+<button class="boton-audio" onclick="despegue()">
+🚀 Despegue
+</button>
+
+<button class="boton-audio" onclick="espacio()">
+🌌 Sonido espacial
+</button>
+
+<button class="boton-audio" onclick="melodia()">
+🎵 Música
+</button>
+
+
+<div class="dato">
+
+💡 En el espacio no podemos escuchar sonidos de la misma manera
+que en la Tierra porque prácticamente no existe aire para transportar
+las ondas sonoras.
+
+</div>
+
+</div>
 
 
 <!-- VIDEO -->
 
-<div class="caja" id="video">
+<div class="caja">
 
-<h2>
-🎥 Video educativo
-</h2>
+<h2>🎬 Video educativo</h2>
 
 <p>
-
-Observa el siguiente video y aprende un poco más
-sobre los cinco sentidos.
-
+Observa este video para aprender más sobre nuestro Sistema Solar.
 </p>
-
 
 <iframe
 class="video"
-src="https://www.youtube.com/embed/a_EfwFzm1ys"
-title="Los cinco sentidos"
+src="https://www.youtube.com/embed/libKVRa01L8"
+title="Sistema Solar"
 allowfullscreen>
 </iframe>
 
-
 </div>
 
-
-</div>
 
 </div>
 
 </section>
-
-
-
-<!-- MUSICA -->
-
-<section class="seccion">
-
-<div class="caja" style="text-align:center;">
-
-<h2>
-🎶 Experimentemos con la música
-</h2>
-
-<p>
-
-La música también es una forma de estimular nuestro
-sentido del oído. Presiona el botón para escuchar una pequeña melodía.
-
-</p>
-
-
-<button
-class="boton-principal"
-style="border:none;"
-onclick="reproducirMusica()">
-
-🎵 Reproducir melodía
-
-</button>
-
-</div>
-
-</section>
-
 
 
 <!-- ACTIVIDAD -->
@@ -833,289 +835,166 @@ onclick="reproducirMusica()">
 <div class="actividad">
 
 <h2 class="titulo">
-🏆 ¡Pon a prueba lo que aprendiste!
-</h2>
-
-<p class="subtitulo">
-
-Selecciona la respuesta correcta.
-
-</p>
-
-
-<div class="pregunta">
-
-<h3>
-
-¿Qué sentido utilizamos principalmente para escuchar una canción?
-
-</h3>
-
-
-<div class="respuestas">
-
-<button
-class="respuesta"
-onclick="correcto()">
-
-👂 Oído
-
-</button>
-
-
-<button
-class="respuesta"
-onclick="incorrecto()">
-
-👃 Olfato
-
-</button>
-
-
-<button
-class="respuesta"
-onclick="incorrecto()">
-
-👅 Gusto
-
-</button>
-
-
-<button
-class="respuesta"
-onclick="incorrecto()">
-
-👁️ Vista
-
-</button>
-
-
-</div>
-
-
-<div id="resultado"></div>
-
-
-</div>
-
-
-<div class="cuidado">
-
-<h2>
-❤️ ¡Cuidemos nuestros sentidos!
+🏆 Misión espacial
 </h2>
 
 <p>
-
-Nuestros sentidos son muy importantes y debemos cuidarlos todos los días.
-
+Comprueba lo que aprendiste durante nuestro recorrido.
 </p>
+
+<div class="pregunta">
+
+¿Cuál es el planeta más grande del Sistema Solar?
 
 </div>
 
+<div class="respuestas">
+
+<button class="respuesta" onclick="incorrecto()">
+🌍 Tierra
+</button>
+
+<button class="respuesta" onclick="incorrecto()">
+🔴 Marte
+</button>
+
+<button class="respuesta" onclick="correcto()">
+🪐 Júpiter
+</button>
+
+<button class="respuesta" onclick="incorrecto()">
+💫 Mercurio
+</button>
+
+</div>
+
+<div id="resultado"></div>
 
 </div>
 
 </section>
 
 
-
-<!-- PIE -->
-
 <footer>
 
-🧠 Los Cinco Sentidos
+🚀 Exploradores del Sistema Solar
 
 <strong>
 Recurso multimedia educativo
 </strong>
 
-<br>
-
 Creado por Jaston Ronaldo Pérez Sales
 
 <br><br>
 
-✨ Aprende, explora y descubre el mundo con tus sentidos ✨
+✨ Aprender también puede ser una gran aventura ✨
 
 </footer>
 
 
-
 <script>
 
+/* DESPEGUE */
 
-/* SONIDO PÁJARO */
-
-function sonidoPajaro(){
+function despegue(){
 
 const audio=new AudioContext();
 
 const osc=audio.createOscillator();
-
 const gain=audio.createGain();
 
 osc.connect(gain);
-
 gain.connect(audio.destination);
 
-osc.type="sine";
+osc.type="sawtooth";
 
-osc.frequency.setValueAtTime(1000,audio.currentTime);
-
+osc.frequency.setValueAtTime(70,audio.currentTime);
 osc.frequency.exponentialRampToValueAtTime(
-1700,
-audio.currentTime+.25
+500,
+audio.currentTime+2
 );
 
-gain.gain.setValueAtTime(.12,audio.currentTime);
+gain.gain.setValueAtTime(.10,audio.currentTime);
+gain.gain.exponentialRampToValueAtTime(
+.001,
+audio.currentTime+2
+);
 
 osc.start();
-
-osc.stop(audio.currentTime+.35);
+osc.stop(audio.currentTime+2);
 
 }
 
 
+/* SONIDO ESPACIAL */
 
-/* PERRO */
-
-function sonidoPerro(){
+function espacio(){
 
 const audio=new AudioContext();
 
 const osc=audio.createOscillator();
-
 const gain=audio.createGain();
 
 osc.connect(gain);
-
 gain.connect(audio.destination);
 
-osc.type="square";
-
+osc.type="sine";
 osc.frequency.value=180;
 
 gain.gain.value=.08;
 
 osc.start();
 
-setTimeout(()=>{
-osc.stop();
-},250);
-
-}
-
-
-
-/* CAMPANA */
-
-function sonidoCampana(){
-
-const audio=new AudioContext();
-
-const osc=audio.createOscillator();
-
-const gain=audio.createGain();
-
-osc.connect(gain);
-
-gain.connect(audio.destination);
-
-osc.type="sine";
-
-osc.frequency.value=850;
-
-gain.gain.setValueAtTime(.18,audio.currentTime);
+osc.frequency.exponentialRampToValueAtTime(
+650,
+audio.currentTime+1.5
+);
 
 gain.gain.exponentialRampToValueAtTime(
 .001,
-audio.currentTime+1.3
+audio.currentTime+2
 );
 
-osc.start();
-
-osc.stop(audio.currentTime+1.3);
+osc.stop(audio.currentTime+2);
 
 }
 
 
+/* MUSICA */
 
-/* LLUVIA */
-
-function sonidoLluvia(){
-
-const audio=new AudioContext();
-
-for(let i=0;i<18;i++){
-
-setTimeout(()=>{
-
-const osc=audio.createOscillator();
-
-const gain=audio.createGain();
-
-osc.connect(gain);
-
-gain.connect(audio.destination);
-
-osc.frequency.value=
-300+Math.random()*800;
-
-gain.gain.value=.025;
-
-osc.start();
-
-setTimeout(()=>{
-osc.stop();
-},80);
-
-},i*80);
-
-}
-
-}
-
-
-
-/* MÚSICA */
-
-function reproducirMusica(){
+function melodia(){
 
 const audio=new AudioContext();
 
 const notas=[
 261.63,
-293.66,
 329.63,
-349.23,
-392.00,
-440.00,
-523.25
+392,
+523.25,
+392,
+329.63,
+261.63
 ];
 
 notas.forEach((nota,i)=>{
 
 const osc=audio.createOscillator();
-
 const gain=audio.createGain();
 
 osc.connect(gain);
-
 gain.connect(audio.destination);
 
 osc.type="sine";
-
 osc.frequency.value=nota;
 
-gain.gain.value=.08;
+gain.gain.value=.07;
 
 osc.start(
 audio.currentTime+i*.30
 );
 
 osc.stop(
-audio.currentTime+i*.30+.28
+audio.currentTime+i*.30+.27
 );
 
 });
@@ -1123,73 +1002,75 @@ audio.currentTime+i*.30+.28
 }
 
 
-
-/* RESPUESTAS */
+/* RESPUESTA */
 
 function correcto(){
 
-document.getElementById("resultado").innerHTML=
-"🎉 ¡Excelente! El oído nos permite escuchar sonidos y música.";
+const resultado=
+document.getElementById("resultado");
 
-document.getElementById("resultado").style.color="#24913c";
+resultado.innerHTML=
+"🎉 ¡Misión cumplida! Júpiter es el planeta más grande del Sistema Solar.";
+
+resultado.style.color="#69e3a1";
 
 confeti();
 
 }
 
-
 function incorrecto(){
 
-document.getElementById("resultado").innerHTML=
-"🤔 Inténtalo nuevamente. Piensa qué parte del cuerpo utilizamos para escuchar.";
+const resultado=
+document.getElementById("resultado");
 
-document.getElementById("resultado").style.color="#d45138";
+resultado.innerHTML=
+"🚀 Inténtalo nuevamente. Revisa las características de los planetas.";
+
+resultado.style.color="#ffae70";
 
 }
-
 
 
 /* CONFETI */
 
 function confeti(){
 
-for(let i=0;i<25;i++){
+for(let i=0;i<30;i++){
 
-const confeti=document.createElement("div");
+const elemento=document.createElement("div");
 
-confeti.innerHTML=["🎉","⭐","✨","🎊"][Math.floor(Math.random()*4)];
+const elementos=[
+"⭐","🚀","✨","🌟","🪐"
+];
 
-confeti.style.position="fixed";
+elemento.innerHTML=
+elementos[Math.floor(Math.random()*elementos.length)];
 
-confeti.style.left=
-Math.random()*100+"vw";
+elemento.style.position="fixed";
+elemento.style.left=Math.random()*100+"vw";
+elemento.style.top="-40px";
+elemento.style.fontSize=
+20+Math.random()*22+"px";
 
-confeti.style.top="-30px";
+elemento.style.zIndex="9999";
 
-confeti.style.fontSize=
-20+Math.random()*20+"px";
+elemento.style.transition=
+"top 2.2s linear, transform 2.2s";
 
-confeti.style.zIndex="9999";
-
-confeti.style.transition=
-"top 2s linear, transform 2s";
-
-document.body.appendChild(confeti);
+document.body.appendChild(elemento);
 
 setTimeout(()=>{
 
-confeti.style.top="100vh";
-
-confeti.style.transform=
-"rotate(720deg)";
+elemento.style.top="100vh";
+elemento.style.transform="rotate(720deg)";
 
 },50);
 
 setTimeout(()=>{
 
-confeti.remove();
+elemento.remove();
 
-},2100);
+},2300);
 
 }
 
@@ -1197,7 +1078,5 @@ confeti.remove();
 
 </script>
 
-
 </body>
-
 </html>
